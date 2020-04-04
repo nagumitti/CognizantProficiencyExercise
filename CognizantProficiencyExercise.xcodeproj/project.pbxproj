@@ -12,6 +12,8 @@
 		DEECD06924388ED300E6EA71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEECD06824388ED300E6EA71 /* Assets.xcassets */; };
 		DEECD06C24388ED300E6EA71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEECD06A24388ED300E6EA71 /* LaunchScreen.storyboard */; };
 		DEECD076243893DF00E6EA71 /* RootViewControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECD075243893DF00E6EA71 /* RootViewControllerManager.swift */; };
+		DEECD0792438A17300E6EA71 /* FactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECD0782438A17300E6EA71 /* FactTableViewCell.swift */; };
+		DEECD07B2438ABB800E6EA71 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECD07A2438ABB800E6EA71 /* UIViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		DEECD06B24388ED300E6EA71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DEECD06D24388ED300E6EA71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DEECD075243893DF00E6EA71 /* RootViewControllerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewControllerManager.swift; sourceTree = "<group>"; };
+		DEECD0782438A17300E6EA71 /* FactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactTableViewCell.swift; sourceTree = "<group>"; };
+		DEECD07A2438ABB800E6EA71 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 			children = (
 				DEECD05F24388ED200E6EA71 /* AppDelegate.swift */,
 				DEECD073243892F100E6EA71 /* Controller */,
+				DEECD0772438A12100E6EA71 /* View */,
+				DEECD07C2438C7F300E6EA71 /* Extensions */,
 				DEECD074243893B400E6EA71 /* Utils */,
 				DEECD06824388ED300E6EA71 /* Assets.xcassets */,
 				DEECD06A24388ED300E6EA71 /* LaunchScreen.storyboard */,
@@ -78,6 +84,22 @@
 				DEECD075243893DF00E6EA71 /* RootViewControllerManager.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		DEECD0772438A12100E6EA71 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DEECD0782438A17300E6EA71 /* FactTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DEECD07C2438C7F300E6EA71 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DEECD07A2438ABB800E6EA71 /* UIViewExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,9 +171,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEECD07B2438ABB800E6EA71 /* UIViewExtension.swift in Sources */,
 				DEECD06424388ED200E6EA71 /* ViewController.swift in Sources */,
 				DEECD06024388ED200E6EA71 /* AppDelegate.swift in Sources */,
 				DEECD076243893DF00E6EA71 /* RootViewControllerManager.swift in Sources */,
+				DEECD0792438A17300E6EA71 /* FactTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

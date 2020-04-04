@@ -10,6 +10,7 @@ import UIKit
 final class ViewController: UIViewController {
   private var tableView: UITableView?
   private var refreshControl: UIRefreshControl?
+  private let tableViewCellId = "FactTableViewCell"
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -24,24 +25,17 @@ final class ViewController: UIViewController {
     tableView?.dataSource = self
     tableView?.delegate = self
     tableView?.rowHeight = UITableView.automaticDimension
+    tableView?.register(FactTableViewCell.self, forCellReuseIdentifier: tableViewCellId)
 
     if let tableView = tableView {
       view.addSubview(tableView)
     }
 
-    setupConstraintsForTableView()
-  }
-
-  private func setupConstraintsForTableView() {
-    tableView?.translatesAutoresizingMaskIntoConstraints = false
-
-    guard let tableViewLeftAnchor = tableView?.leftAnchor.constraint(equalTo: view.leftAnchor),
-      let tableViewRightAnchor = tableView?.rightAnchor.constraint(equalTo: view.rightAnchor),
-      let tableViewTopAnchor = tableView?.topAnchor.constraint(equalTo: view.topAnchor),
-      let tableViewBottomAnchor = tableView?.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-      else { return }
-
-    view.addConstraints([tableViewLeftAnchor, tableViewRightAnchor, tableViewTopAnchor, tableViewBottomAnchor])
+    tableView?.anchor(top: view.topAnchor, left: view.leftAnchor,
+                      bottom: view.bottomAnchor, right: view.rightAnchor,
+                      paddingTop: 0, paddingLeft: 0,
+                      paddingBottom: 0, paddingRight: 0,
+                      width: 0, height: 0)
   }
 
   private func initializeRefreshControl() {
@@ -65,7 +59,9 @@ extension ViewController: UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    return UITableViewCell()
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellId,
+                                                   for: indexPath) as? FactTableViewCell else { return UITableViewCell() }
+    return cell
   }
 }
 
