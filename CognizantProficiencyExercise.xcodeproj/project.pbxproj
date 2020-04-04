@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DEECD06024388ED200E6EA71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECD05F24388ED200E6EA71 /* AppDelegate.swift */; };
-		DEECD06224388ED200E6EA71 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECD06124388ED200E6EA71 /* SceneDelegate.swift */; };
 		DEECD06424388ED200E6EA71 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECD06324388ED200E6EA71 /* ViewController.swift */; };
-		DEECD06724388ED200E6EA71 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEECD06524388ED200E6EA71 /* Main.storyboard */; };
 		DEECD06924388ED300E6EA71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEECD06824388ED300E6EA71 /* Assets.xcassets */; };
 		DEECD06C24388ED300E6EA71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEECD06A24388ED300E6EA71 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -18,9 +16,7 @@
 /* Begin PBXFileReference section */
 		DEECD05C24388ED200E6EA71 /* CognizantProficiencyExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CognizantProficiencyExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEECD05F24388ED200E6EA71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DEECD06124388ED200E6EA71 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		DEECD06324388ED200E6EA71 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		DEECD06624388ED200E6EA71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DEECD06824388ED300E6EA71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DEECD06B24388ED300E6EA71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DEECD06D24388ED300E6EA71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -57,9 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				DEECD05F24388ED200E6EA71 /* AppDelegate.swift */,
-				DEECD06124388ED200E6EA71 /* SceneDelegate.swift */,
 				DEECD06324388ED200E6EA71 /* ViewController.swift */,
-				DEECD06524388ED200E6EA71 /* Main.storyboard */,
 				DEECD06824388ED300E6EA71 /* Assets.xcassets */,
 				DEECD06A24388ED300E6EA71 /* LaunchScreen.storyboard */,
 				DEECD06D24388ED300E6EA71 /* Info.plist */,
@@ -126,7 +120,6 @@
 			files = (
 				DEECD06C24388ED300E6EA71 /* LaunchScreen.storyboard in Resources */,
 				DEECD06924388ED300E6EA71 /* Assets.xcassets in Resources */,
-				DEECD06724388ED200E6EA71 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,21 +132,12 @@
 			files = (
 				DEECD06424388ED200E6EA71 /* ViewController.swift in Sources */,
 				DEECD06024388ED200E6EA71 /* AppDelegate.swift in Sources */,
-				DEECD06224388ED200E6EA71 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		DEECD06524388ED200E6EA71 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DEECD06624388ED200E6EA71 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		DEECD06A24388ED300E6EA71 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -285,6 +269,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = CognizantProficiencyExercise/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,6 +287,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = CognizantProficiencyExercise/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
