@@ -11,14 +11,13 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
+  private var rootViewControllerManager: RootViewControllerManager?
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     window = UIWindow(frame: UIScreen.main.bounds)
-    let viewController = ViewController()
-    let navigationController = UINavigationController(rootViewController: viewController)
-
+    rootViewControllerManager = RootViewControllerManager()
     window?.backgroundColor = .white
-    window?.rootViewController = navigationController
+    window?.rootViewController = rootViewControllerManager?.rootViewController()
     window?.makeKeyAndVisible()
 
     return true
