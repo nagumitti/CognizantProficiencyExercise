@@ -10,6 +10,7 @@ import UIKit
 final class ViewController: UIViewController {
   private var tableView: UITableView?
   private var refreshControl: UIRefreshControl?
+  private var activityIndicator: UIActivityIndicatorView?
   private let tableViewCellId = "FactTableViewCell"
   private var service: FactsService! = FactsService()
   lazy var viewModel: FactsViewModelProtocol = {
@@ -22,10 +23,11 @@ final class ViewController: UIViewController {
 
     initializeTableView()
     initializeRefreshControl()
+    initializeActivityIndicator()
     factsServiceCall()
   }
 
-  // MARK: - Initialize TableView, RefreshControl
+  // MARK: - Initialize TableView, RefreshControl, ActivityIndicator
   private func initializeTableView() {
     tableView = UITableView(frame: .zero, style: .plain)
     tableView?.allowsSelection = false
@@ -54,13 +56,28 @@ final class ViewController: UIViewController {
     }
   }
 
+  private func initializeActivityIndicator() {
+    activityIndicator = UIActivityIndicatorView(style: .gray)
+    activityIndicator?.hidesWhenStopped = true
+
+    if let activityIndicator = activityIndicator {
+      view.addSubview(activityIndicator)
+    }
+
+    activityIndicator?.translatesAutoresizingMaskIntoConstraints = false
+    activityIndicator?.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    activityIndicator?.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+  }
+
   @objc func factsServiceCall() {
     UIApplication.shared.isNetworkActivityIndicatorVisible = true
-    self.viewModel.fetchServiceCall { result in
+    activityIndicator?.startAnimating()
+    self.viewModel.fetchServiceCall { [weak self] result in
+      self?.activityIndicator?.stopAnimating()
       switch result {
       case .success :
-        self.title = self.viewModel.title
-        self.tableView?.reloadData()
+        self?.title = self?.viewModel.title
+        self?.tableView?.reloadData()
         break
       case .failure :
         break
