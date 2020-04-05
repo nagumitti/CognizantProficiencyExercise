@@ -14,6 +14,9 @@
 		DEBBE8BD24398EFD00B3DD5E /* RequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBBE8BB24398EFD00B3DD5E /* RequestService.swift */; };
 		DEBBE8BE24398EFD00B3DD5E /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBBE8BC24398EFD00B3DD5E /* RequestFactory.swift */; };
 		DEBBE8C3243993F900B3DD5E /* ParserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBBE8C2243993F900B3DD5E /* ParserHelper.swift */; };
+		DEBBE8CA24399C9E00B3DD5E /* RequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBBE8C924399C9D00B3DD5E /* RequestHandler.swift */; };
+		DEBBE8CD24399CF500B3DD5E /* FactsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBBE8CC24399CF500B3DD5E /* FactsServiceProtocol.swift */; };
+		DEBBE8CF24399D1600B3DD5E /* FactsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBBE8CE24399D1600B3DD5E /* FactsService.swift */; };
 		DEECD06024388ED200E6EA71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECD05F24388ED200E6EA71 /* AppDelegate.swift */; };
 		DEECD06424388ED200E6EA71 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECD06324388ED200E6EA71 /* ViewController.swift */; };
 		DEECD06924388ED300E6EA71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEECD06824388ED300E6EA71 /* Assets.xcassets */; };
@@ -31,6 +34,9 @@
 		DEBBE8BB24398EFD00B3DD5E /* RequestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestService.swift; sourceTree = "<group>"; };
 		DEBBE8BC24398EFD00B3DD5E /* RequestFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
 		DEBBE8C2243993F900B3DD5E /* ParserHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParserHelper.swift; sourceTree = "<group>"; };
+		DEBBE8C924399C9D00B3DD5E /* RequestHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestHandler.swift; sourceTree = "<group>"; };
+		DEBBE8CC24399CF500B3DD5E /* FactsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsServiceProtocol.swift; sourceTree = "<group>"; };
+		DEBBE8CE24399D1600B3DD5E /* FactsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsService.swift; sourceTree = "<group>"; };
 		DEECD05C24388ED200E6EA71 /* CognizantProficiencyExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CognizantProficiencyExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEECD05F24388ED200E6EA71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEECD06324388ED200E6EA71 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +71,7 @@
 		DEBBE8B024398DFD00B3DD5E /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				DEBBE8CB24399CDD00B3DD5E /* FactsService */,
 				DEBBE8B624398EBA00B3DD5E /* Result */,
 				DEBBE8C1243993A400B3DD5E /* Parser */,
 				DEBBE8B524398EA800B3DD5E /* Network */,
@@ -75,6 +82,7 @@
 		DEBBE8B524398EA800B3DD5E /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				DEBBE8C924399C9D00B3DD5E /* RequestHandler.swift */,
 				DEBBE8BC24398EFD00B3DD5E /* RequestFactory.swift */,
 				DEBBE8BB24398EFD00B3DD5E /* RequestService.swift */,
 			);
@@ -95,6 +103,15 @@
 				DEBBE8C2243993F900B3DD5E /* ParserHelper.swift */,
 			);
 			path = Parser;
+			sourceTree = "<group>";
+		};
+		DEBBE8CB24399CDD00B3DD5E /* FactsService */ = {
+			isa = PBXGroup;
+			children = (
+				DEBBE8CC24399CF500B3DD5E /* FactsServiceProtocol.swift */,
+				DEBBE8CE24399D1600B3DD5E /* FactsService.swift */,
+			);
+			path = FactsService;
 			sourceTree = "<group>";
 		};
 		DEECD05324388ED100E6EA71 = {
@@ -239,9 +256,12 @@
 				DEBBE8B924398EE800B3DD5E /* ErrorResult.swift in Sources */,
 				DEBBE8BD24398EFD00B3DD5E /* RequestService.swift in Sources */,
 				DEECD06424388ED200E6EA71 /* ViewController.swift in Sources */,
+				DEBBE8CD24399CF500B3DD5E /* FactsServiceProtocol.swift in Sources */,
+				DEBBE8CA24399C9E00B3DD5E /* RequestHandler.swift in Sources */,
 				DEBBE8AF2438D34A00B3DD5E /* Reachability.swift in Sources */,
 				DEECD06024388ED200E6EA71 /* AppDelegate.swift in Sources */,
 				DEBBE8992438D04800B3DD5E /* FactDataModel.swift in Sources */,
+				DEBBE8CF24399D1600B3DD5E /* FactsService.swift in Sources */,
 				DEECD076243893DF00E6EA71 /* RootViewControllerManager.swift in Sources */,
 				DEECD0792438A17300E6EA71 /* FactTableViewCell.swift in Sources */,
 			);
