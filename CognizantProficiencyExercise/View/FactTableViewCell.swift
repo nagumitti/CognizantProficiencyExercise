@@ -10,7 +10,7 @@ import UIKit
 final class FactTableViewCell: UITableViewCell {
   private var titleLabel: UILabel?
   private var descriptionLabel: UILabel?
-  private var factImageView: UIImageView?
+  var factImageView: UIImageView?
   private let imageViewWidthHeight: CGFloat = 75
   private let paddingOfSubview: CGFloat = 10
 
@@ -51,8 +51,9 @@ final class FactTableViewCell: UITableViewCell {
   }
 
   func configureCell(_ factDataModel: FactDataModel) {
-    titleLabel?.text = factDataModel.title
-    descriptionLabel?.text = factDataModel.description
+    titleLabel?.text = factDataModel.title ?? "No Title"
+    descriptionLabel?.text = factDataModel.description ?? "No Description"
+    factImageView?.image = UIImage(named: "placeholder")
   }
 
   private func getTitleLabel() -> UILabel {
@@ -74,7 +75,7 @@ final class FactTableViewCell: UITableViewCell {
 
   private func getFactImageView() -> UIImageView {
     let imgView = UIImageView()
-    imgView.contentMode = .scaleAspectFit
+    imgView.layer.cornerRadius = 10
     imgView.clipsToBounds = true
     return imgView
   }

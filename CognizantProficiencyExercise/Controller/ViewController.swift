@@ -28,6 +28,7 @@ final class ViewController: UIViewController {
   // MARK: - Initialize TableView, RefreshControl
   private func initializeTableView() {
     tableView = UITableView(frame: .zero, style: .plain)
+    tableView?.allowsSelection = false
     tableView?.dataSource = self
     tableView?.delegate = self
     tableView?.rowHeight = UITableView.automaticDimension
@@ -76,10 +77,29 @@ extension ViewController: UITableViewDataSource {
     viewModel.rows.count
   }
 
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    let dataModel = viewModel.rows[indexPath.row]
+
+    guard dataModel.description == nil else {
+      return UITableView.automaticDimension
+    }
+
+    return 100
+  }
+
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellId,
                                                    for: indexPath) as? FactTableViewCell else { return UITableViewCell() }
-    cell.configureCell(viewModel.rows[indexPath.row])
+    let dataModel = viewModel.rows[indexPath.row]
+    cell.configureCell(dataModel)
+    ImageManager().downloadImageFromURL(indexPath, dataModel.imageHref ?? "") { [weak self] (success, indexPath, image) in
+      let cell = self?.tableView?.cellForRow(at: indexPath!) as? FactTableViewCell
+      if success {
+        cell?.factImageView?.image = image
+      } else {
+        cell?.factImageView?.image = UIImage(named: "placeholder")
+      }
+    }
     return cell
   }
 }
