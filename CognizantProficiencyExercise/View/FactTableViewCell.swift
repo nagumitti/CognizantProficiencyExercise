@@ -50,6 +50,11 @@ final class FactTableViewCell: UITableViewCell {
     fatalError("init(coder:) has not been implemented")
   }
 
+  func configureCell(_ factDataModel: FactDataModel) {
+    titleLabel?.text = factDataModel.title
+    descriptionLabel?.text = factDataModel.description
+  }
+
   private func getTitleLabel() -> UILabel {
     let lbl = UILabel()
     lbl.textColor = .black
