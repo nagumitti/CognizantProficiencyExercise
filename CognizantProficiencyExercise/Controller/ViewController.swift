@@ -33,15 +33,14 @@ final class ViewController: UIViewController {
     tableView?.allowsSelection = false
     tableView?.dataSource = self
     tableView?.delegate = self
-    tableView?.rowHeight = UITableView.automaticDimension
     tableView?.register(FactTableViewCell.self, forCellReuseIdentifier: tableViewCellId)
 
     if let tableView = tableView {
       view.addSubview(tableView)
     }
 
-    tableView?.anchor(top: view.topAnchor, left: view.leftAnchor,
-                      bottom: view.bottomAnchor, right: view.rightAnchor,
+    tableView?.anchor(top: view.topAnchor, left: view.leadingAnchor,
+                      bottom: view.bottomAnchor, right: view.trailingAnchor,
                       paddingTop: 0, paddingLeft: 0,
                       paddingBottom: 0, paddingRight: 0,
                       width: 0, height: 0)
@@ -92,16 +91,6 @@ final class ViewController: UIViewController {
 extension ViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     viewModel.rows.count
-  }
-
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    let dataModel = viewModel.rows[indexPath.row]
-
-    guard dataModel.description == nil else {
-      return UITableView.automaticDimension
-    }
-
-    return 100
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -19,13 +19,13 @@ extension UIView {
       self.topAnchor.constraint(equalTo: top, constant: paddingTop).isActive = true
     }
     if let left = left {
-      self.leftAnchor.constraint(equalTo: left, constant: paddingLeft).isActive = true
+      self.leadingAnchor.constraint(equalTo: left, constant: paddingLeft).isActive = true
     }
     if let right = right {
-      rightAnchor.constraint(equalTo: right, constant: -paddingRight).isActive = true
+      right.constraint(equalTo: trailingAnchor, constant: paddingRight).isActive = true
     }
     if let bottom = bottom {
-      bottomAnchor.constraint(equalTo: bottom, constant: -paddingBottom).isActive = true
+      bottom.constraint(equalTo: bottomAnchor, constant: paddingBottom).isActive = true
     }
     if height != 0 {
       heightAnchor.constraint(equalToConstant: height).isActive = true
@@ -34,4 +34,20 @@ extension UIView {
       widthAnchor.constraint(equalToConstant: width).isActive = true
     }
   }
+
+    func bottomAnchorGreaterThanOrEqualTo(top: NSLayoutYAxisAnchor?, left: NSLayoutXAxisAnchor?,
+                bottom: NSLayoutYAxisAnchor?, right: NSLayoutXAxisAnchor?,
+                paddingTop: CGFloat, paddingLeft: CGFloat,
+                paddingBottom: CGFloat, paddingRight: CGFloat,
+                width: CGFloat, height: CGFloat) {
+        anchor(top: top, left: left,
+               bottom: nil, right: right,
+               paddingTop: paddingTop, paddingLeft: paddingLeft,
+               paddingBottom: paddingBottom, paddingRight: paddingRight,
+               width: width, height: height)
+
+      if let bottom = bottom {
+        bottom.constraint(greaterThanOrEqualTo: bottomAnchor, constant: paddingBottom).isActive = true
+      }
+    }
 }

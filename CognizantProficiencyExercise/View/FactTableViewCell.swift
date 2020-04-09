@@ -19,31 +19,30 @@ final class FactTableViewCell: UITableViewCell {
     titleLabel = getTitleLabel()
     descriptionLabel = getDescriptionLabel()
     factImageView = getFactImageView()
-
+    
     guard let titleLabel = titleLabel,
       let descriptionLabel = descriptionLabel,
       let factImageView = factImageView else { return }
-
-    addSubview(titleLabel)
-    addSubview(descriptionLabel)
-    addSubview(factImageView)
-
-    factImageView.anchor(top: topAnchor, left: leftAnchor,
-                         bottom: nil, right: nil,
-                         paddingTop: paddingOfSubview, paddingLeft: paddingOfSubview,
-                         paddingBottom: 0, paddingRight: 0,
-                         width: imageViewWidthHeight, height: imageViewWidthHeight)
-    titleLabel.anchor(top: topAnchor, left: factImageView.rightAnchor,
-                      bottom: nil, right: rightAnchor,
+    
+    contentView.addSubview(factImageView)
+    contentView.addSubview(titleLabel)
+    contentView.addSubview(descriptionLabel)
+    
+    factImageView.bottomAnchorGreaterThanOrEqualTo(top: contentView.topAnchor, left: contentView.leadingAnchor,
+                                                   bottom: contentView.bottomAnchor, right: nil,
+                                                   paddingTop: paddingOfSubview, paddingLeft: paddingOfSubview,
+                                                   paddingBottom: paddingOfSubview, paddingRight: 0,
+                                                   width: imageViewWidthHeight, height: imageViewWidthHeight)
+    titleLabel.anchor(top: contentView.topAnchor, left: factImageView.trailingAnchor,
+                      bottom: nil, right: contentView.trailingAnchor,
                       paddingTop: paddingOfSubview, paddingLeft: paddingOfSubview,
                       paddingBottom: 0, paddingRight: paddingOfSubview,
                       width: 0, height: 0)
-    descriptionLabel.anchor(top: titleLabel.bottomAnchor, left: factImageView.rightAnchor,
-                            bottom: bottomAnchor, right: rightAnchor,
-                            paddingTop: paddingOfSubview, paddingLeft: paddingOfSubview,
-                            paddingBottom: paddingOfSubview, paddingRight: paddingOfSubview,
-                            width: 0, height: 0)
-
+    descriptionLabel.bottomAnchorGreaterThanOrEqualTo(top: titleLabel.bottomAnchor, left: factImageView.trailingAnchor,
+                                                      bottom: contentView.bottomAnchor, right: contentView.trailingAnchor,
+                                                      paddingTop: paddingOfSubview, paddingLeft: paddingOfSubview,
+                                                      paddingBottom: paddingOfSubview, paddingRight: paddingOfSubview,
+                                                      width: 0, height: 0)
   }
 
   required init?(coder: NSCoder) {
