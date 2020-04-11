@@ -22,6 +22,7 @@ final class ImageManager: ImageManaging {
     self.session = session
   }
 
+  // Download the image asynchronossly and update the image once download completed.
   func downloadImageFromURL(_ indexPath: IndexPath?,
                             _ urlString: String,
                             completion: downloadCompletionHandler) {

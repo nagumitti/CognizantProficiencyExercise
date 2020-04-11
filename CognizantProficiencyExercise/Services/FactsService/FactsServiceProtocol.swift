@@ -8,5 +8,5 @@
 import Foundation
 
 protocol FactsServiceProtocol {
-    func fetchFacts(_ completion: @escaping ((Result<FactsModel, ErrorResult>) -> Void))
+  func fetchFacts(_ completion: @escaping ((Result<FactsModel, ErrorResult>) -> Void))
 }

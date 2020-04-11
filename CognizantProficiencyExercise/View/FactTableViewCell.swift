@@ -7,6 +7,7 @@
 
 import UIKit
 
+// Tableviewcell is used to map the each rows from facrts json.
 final class FactTableViewCell: UITableViewCell {
   private var titleLabel: UILabel?
   private var descriptionLabel: UILabel?
@@ -19,15 +20,16 @@ final class FactTableViewCell: UITableViewCell {
     titleLabel = getTitleLabel()
     descriptionLabel = getDescriptionLabel()
     factImageView = getFactImageView()
-    
+
     guard let titleLabel = titleLabel,
       let descriptionLabel = descriptionLabel,
       let factImageView = factImageView else { return }
-    
+
     contentView.addSubview(factImageView)
     contentView.addSubview(titleLabel)
     contentView.addSubview(descriptionLabel)
-    
+
+    // Adding constraints for factImageView, titleLabel and descriptionLabel
     factImageView.bottomAnchorGreaterThanOrEqualTo(top: contentView.topAnchor, left: contentView.leadingAnchor,
                                                    bottom: contentView.bottomAnchor, right: nil,
                                                    paddingTop: paddingOfSubview, paddingLeft: paddingOfSubview,
@@ -49,6 +51,7 @@ final class FactTableViewCell: UITableViewCell {
     fatalError("init(coder:) has not been implemented")
   }
 
+  // Configure the subview using the FactDataModel
   func configureCell(_ factDataModel: FactDataModel) {
     titleLabel?.text = factDataModel.title ?? "No Title"
     descriptionLabel?.text = factDataModel.description ?? "No Description"

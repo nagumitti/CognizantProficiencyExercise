@@ -8,18 +8,19 @@
 import Foundation
 
 class FactsService: RequestHandler, FactsServiceProtocol {
-    private let endpoint = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
-    var task: URLSessionTask?
+  private let endpoint = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
+  var task: URLSessionTask?
 
-    func fetchFacts(_ completion: @escaping ((Result<FactsModel, ErrorResult>) -> Void)) {
-        self.cancelFetchFeeds()
-        task = RequestService().loadData(urlString: endpoint, completion: self.networkResult(completion: completion))
-    }
+  // Cancel the service call if it already processing. Make the service call based on the network conditon.
+  func fetchFacts(_ completion: @escaping ((Result<FactsModel, ErrorResult>) -> Void)) {
+    self.cancelFetchFeeds()
+    task = RequestService().loadData(urlString: endpoint, completion: self.networkResult(completion: completion))
+  }
 
-    func cancelFetchFeeds() {
-        if let task = task {
-            task.cancel()
-        }
-        task = nil
+  func cancelFetchFeeds() {
+    if let task = task {
+      task.cancel()
     }
+    task = nil
+  }
 }

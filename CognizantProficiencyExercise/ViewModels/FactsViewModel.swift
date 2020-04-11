@@ -18,6 +18,7 @@ class FactsViewModel: FactsViewModelProtocol {
     rows = []
   }
 
+  // We are making service call and get the parced factsmodel and save result into FactsViewModel properties
   func fetchServiceCall(_ completion: ((Result<Bool, ErrorResult>) -> Void)? = nil) {
     guard let service = service else {
       completion?(Result.failure(ErrorResult.custom(string: "Missing service")))

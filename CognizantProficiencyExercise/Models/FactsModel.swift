@@ -8,17 +8,18 @@
 import Foundation
 
 struct FactsModel: Decodable {
-    let title: String?
-    let rows: [FactDataModel]?
+  let title: String?
+  let rows: [FactDataModel]?
 }
 
 extension FactsModel: Parceable {
+  // parseObject will converts the Data to FactsModel Object
   static func parseObject(data: Data) -> Result<FactsModel, ErrorResult> {
     let decoder = JSONDecoder()
     if let result = try? decoder.decode(FactsModel.self, from: data) {
-        return Result.success(result)
+      return Result.success(result)
     } else {
-        return Result.failure(ErrorResult.parser(string: "Unable to parse FactsModel results"))
+      return Result.failure(ErrorResult.parser(string: "Unable to parse FactsModel results"))
     }
   }
 }

@@ -7,6 +7,7 @@
 
 import UIKit
 
+// Displays the tableview with the contents recieved from the view model.
 final class ViewController: UIViewController {
   private var tableView: UITableView?
   private var refreshControl: UIRefreshControl?
@@ -70,6 +71,7 @@ final class ViewController: UIViewController {
     activityIndicator?.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
   }
 
+  // Get the facts json data and show activity indicator while fetching the service.
   @objc private func factsServiceCall() {
     guard let viewModel = viewModel else {
       return
@@ -104,6 +106,7 @@ extension ViewController: UITableViewDataSource {
       let viewModel = viewModel else { return UITableViewCell() }
     let dataModel = viewModel.rows[indexPath.row]
     cell.configureCell(dataModel)
+    //Download the image from the imageHref asynchronossly.
     ImageManager().downloadImageFromURL(indexPath, dataModel.imageHref ?? "") { [weak self] (success, indexPath, image) in
       let cell = self?.tableView?.cellForRow(at: indexPath!) as? FactTableViewCell
       if success {
