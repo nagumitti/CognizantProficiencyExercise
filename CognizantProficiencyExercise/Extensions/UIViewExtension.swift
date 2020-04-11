@@ -16,10 +16,10 @@ extension UIView {
     translatesAutoresizingMaskIntoConstraints = false
 
     if let top = top {
-      self.topAnchor.constraint(equalTo: top, constant: paddingTop).isActive = true
+      topAnchor.constraint(equalTo: top, constant: paddingTop).isActive = true
     }
     if let left = left {
-      self.leadingAnchor.constraint(equalTo: left, constant: paddingLeft).isActive = true
+      leadingAnchor.constraint(equalTo: left, constant: paddingLeft).isActive = true
     }
     if let right = right {
       right.constraint(equalTo: trailingAnchor, constant: paddingRight).isActive = true
@@ -35,19 +35,19 @@ extension UIView {
     }
   }
 
-    func bottomAnchorGreaterThanOrEqualTo(top: NSLayoutYAxisAnchor?, left: NSLayoutXAxisAnchor?,
-                bottom: NSLayoutYAxisAnchor?, right: NSLayoutXAxisAnchor?,
-                paddingTop: CGFloat, paddingLeft: CGFloat,
-                paddingBottom: CGFloat, paddingRight: CGFloat,
-                width: CGFloat, height: CGFloat) {
-        anchor(top: top, left: left,
-               bottom: nil, right: right,
-               paddingTop: paddingTop, paddingLeft: paddingLeft,
-               paddingBottom: paddingBottom, paddingRight: paddingRight,
-               width: width, height: height)
+  func bottomAnchorGreaterThanOrEqualTo(top: NSLayoutYAxisAnchor?, left: NSLayoutXAxisAnchor?,
+                                        bottom: NSLayoutYAxisAnchor?, right: NSLayoutXAxisAnchor?,
+                                        paddingTop: CGFloat, paddingLeft: CGFloat,
+                                        paddingBottom: CGFloat, paddingRight: CGFloat,
+                                        width: CGFloat, height: CGFloat) {
+    anchor(top: top, left: left,
+           bottom: nil, right: right,
+           paddingTop: paddingTop, paddingLeft: paddingLeft,
+           paddingBottom: 0, paddingRight: paddingRight,
+           width: width, height: height)
 
-      if let bottom = bottom {
-        bottom.constraint(greaterThanOrEqualTo: bottomAnchor, constant: paddingBottom).isActive = true
-      }
+    if let bottom = bottom {
+      bottom.constraint(greaterThanOrEqualTo: bottomAnchor, constant: paddingBottom).isActive = true
     }
+  }
 }

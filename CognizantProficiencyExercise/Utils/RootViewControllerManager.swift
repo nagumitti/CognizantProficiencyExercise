@@ -17,6 +17,9 @@ final class RootViewControllerManager { }
 extension RootViewControllerManager: ViewControllerManagers {
   func rootViewController() -> UIViewController {
     let viewController = ViewController()
+    let service = FactsService()
+    let viewModel = FactsViewModel(withService: service)
+    viewController.configure(viewModel: viewModel, service: service)
     let navigationController = UINavigationController(rootViewController: viewController)
 
     return navigationController

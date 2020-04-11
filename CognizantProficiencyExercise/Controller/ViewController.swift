@@ -12,11 +12,8 @@ final class ViewController: UIViewController {
   private var refreshControl: UIRefreshControl?
   private var activityIndicator: UIActivityIndicatorView?
   private let tableViewCellId = "FactTableViewCell"
-  private var service: FactsService! = FactsService()
-  lazy var viewModel: FactsViewModelProtocol = {
-    let viewModel = FactsViewModel(withService: service)
-    return viewModel
-  }()
+  private var service: FactsServiceProtocol?
+  private var viewModel: FactsViewModelProtocol?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -27,12 +24,17 @@ final class ViewController: UIViewController {
     factsServiceCall()
   }
 
+  func configure(viewModel: FactsViewModelProtocol,
+                 service: FactsServiceProtocol) {
+    self.service = service
+    self.viewModel = viewModel
+  }
+
   // MARK: - Initialize TableView, RefreshControl, ActivityIndicator
   private func initializeTableView() {
     tableView = UITableView(frame: .zero, style: .plain)
     tableView?.allowsSelection = false
     tableView?.dataSource = self
-    tableView?.delegate = self
     tableView?.register(FactTableViewCell.self, forCellReuseIdentifier: tableViewCellId)
 
     if let tableView = tableView {
@@ -68,14 +70,17 @@ final class ViewController: UIViewController {
     activityIndicator?.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
   }
 
-  @objc func factsServiceCall() {
+  @objc private func factsServiceCall() {
+    guard let viewModel = viewModel else {
+      return
+    }
     UIApplication.shared.isNetworkActivityIndicatorVisible = true
     activityIndicator?.startAnimating()
-    self.viewModel.fetchServiceCall { [weak self] result in
+    viewModel.fetchServiceCall { [weak self] result in
       self?.activityIndicator?.stopAnimating()
       switch result {
       case .success :
-        self?.title = self?.viewModel.title
+        self?.title = self?.viewModel?.title ?? ""
         self?.tableView?.reloadData()
         break
       case .failure :
@@ -90,12 +95,13 @@ final class ViewController: UIViewController {
 // MARK: - TableViewDataSource Setup
 extension ViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    viewModel.rows.count
+    viewModel?.rows.count ?? 0
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellId,
-                                                   for: indexPath) as? FactTableViewCell else { return UITableViewCell() }
+                                                   for: indexPath) as? FactTableViewCell,
+      let viewModel = viewModel else { return UITableViewCell() }
     let dataModel = viewModel.rows[indexPath.row]
     cell.configureCell(dataModel)
     ImageManager().downloadImageFromURL(indexPath, dataModel.imageHref ?? "") { [weak self] (success, indexPath, image) in
@@ -108,8 +114,4 @@ extension ViewController: UITableViewDataSource {
     }
     return cell
   }
-}
-
-// MARK: - TableViewDelegate Setup
-extension ViewController: UITableViewDelegate {
 }
